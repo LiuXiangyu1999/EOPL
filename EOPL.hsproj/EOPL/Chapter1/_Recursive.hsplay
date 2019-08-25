@@ -1,0 +1,55 @@
+-- Haskell Playground 1.0
+Lambda ("x") (Apply ( Apply (I "+") (I "x")) (I "5"))
+
+
+occursFree "x" (I "x")
+occursFree "x" (I "y")
+occursFree "x" (Lambda ("x") (Apply (I "x") (I "y")))
+occursFree "x" (Lambda ("y") (Apply (I "x") (I "y")))
+occursFree "x" (Apply (Lambda ("x") (I "x")) (Apply (I "x") (I "y")))
+
+
+
+-- Testing 1.34
+
+let tree = (BT 14 (BT 7 Nil (BT 12 Nil Nil))
+                  (BT 26 (BT 20 (BT 17 Nil Nil) Nil)
+                         (BT 31 Nil Nil)))
+                         
+path 17 tree
+
+
+
+:t modify
+
+
+
+
+-- Test 1.35
+
+--(interior-node ’foo
+--      (interior-node ’bar
+--        (leaf 26)
+--        (leaf 12))
+--      (interior-node ’baz
+--        (leaf 11)
+--        (interior-node ’quux
+--          (leaf 117)
+--          (leaf 14)
+
+let leafInt = (Branch "foo" (Branch "bar" (Leaf 26)
+                                          (Leaf 12))
+                            (Branch "baz" (Leaf 11)
+                                          (Branch "quux" (Leaf 117)
+                                                         (Leaf 14))))
+                            
+
+
+fst $ runState (change leafInt) 0
+
+
+
+
+
+
+
