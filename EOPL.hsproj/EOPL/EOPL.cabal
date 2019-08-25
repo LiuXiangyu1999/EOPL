@@ -13,6 +13,6 @@ executable EOPL
         base -any
     default-language: Haskell2010
     other-modules:
-        Chapter22.DataAbstraction
-        Chapter1.Recursive
+        Chapter_2.DataAbstraction
+        Chapter_1.Recursive
 
