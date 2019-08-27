@@ -221,7 +221,7 @@ token :: Par a -> Par a
 token p = spaces >> p
 
 getVarName :: Par String
-getVarName = token (many (sat isAlpha))
+getVarName = token (some (sat isAlpha))
 
 
 parId :: Par LcExp
