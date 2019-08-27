@@ -1,0 +1,33 @@
+-- Haskell Playground 1.0
+
+
+
+
+
+-- Test 2.20
+
+let lst = [4, 3, 6, 4, 1, 9, 5]
+let tree = buildTreeFromList lst
+
+let newtree = creatNewTree tree
+
+
+
+t1 = moveUp . moveRight $ moveRight newtree  
+t2 = moveRight newtree
+
+
+
+
+runPar (char 'a') "abc"
+
+
+
+runPar spaces "  43 "
+
+
+runPar (token (string "lambda")) "lambda x"
+
+
+
+runPar parLcExp "(lambda (x) (lambda (y) (apply y x)))"

@@ -1,4 +1,4 @@
-module Chapter1.Recursive() where
+module Chapter_1.Recursive() where
   
 
   
@@ -70,8 +70,8 @@ inTree :: Int -> BinTree -> Bool
 
 path i Nil = []
 path i (BT j t1 t2) | i == j    = []
-                    | otherwise = if inTree i t1 then Chapter1.Recursive.Left : (path i t1)
-                                                 else if  inTree i t2 then Chapter1.Recursive.Right : (path i t2)
+                    | otherwise = if inTree i t1 then Chapter_1.Recursive.Left : (path i t1)
+                                                 else if  inTree i t2 then Chapter_1.Recursive.Right : (path i t2)
                                                                       else []
 inTree i Nil = False
 inTree i (BT j t1 t2) = (i == j) || (inTree i t1) || (inTree i t2)
@@ -97,6 +97,7 @@ instance Monad (State s) where
   p >>= q = ST (\s -> let (a, s') = runState p s
                           tmp = q a
                       in runState tmp s')
+
 
 
 
