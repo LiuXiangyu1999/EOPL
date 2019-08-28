@@ -221,7 +221,7 @@ token :: Par a -> Par a
 token p = spaces >> p
 
 getVarName :: Par String
-getVarName = token (many (sat isAlpha))
+getVarName = token (some (sat isAlpha))
 
 
 parId :: Par LcExp
@@ -262,11 +262,34 @@ parLcExp = parLambda <|> parApply <|> parId
 
 
 
+-- Exercise 2.31
+
+parDigi :: Par Int
+parDigi = do { x <-  token (some (sat isDigit)); return (read x :: Int);}
+
+
+data PrefixExp = Number Int | Neg PrefixExp PrefixExp deriving Show
+
+
+parNumber :: Par PrefixExp
+parNumber = parDigi >>= (\x -> return (Number x))
+
+parNeg :: Par PrefixExp
+parNeg = do {
+              symbol "-";
+              x <- parPrefixExp;
+              y <- parPrefixExp;
+              return (Neg x y);
+          }
+
+
+parPrefixExp :: Par PrefixExp
+parPrefixExp = parNumber <|> parNeg
 
 
 
-
-
+parPrefixList :: Par PrefixExp
+parPrefixList = do {symbol "("; exp <- parPrefixExp; symbol ")"; return exp}
 
 
 

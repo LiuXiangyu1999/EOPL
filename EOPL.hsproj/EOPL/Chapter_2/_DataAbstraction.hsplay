@@ -31,3 +31,35 @@ runPar (token (string "lambda")) "lambda x"
 
 
 runPar parLcExp "(lambda (x) (lambda (y) (apply y x)))"
+
+
+
+
+
+
+
+
+runPar parPrefixList "(- - 3 2 - 4 - 12 7)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
